@@ -6,8 +6,8 @@ y lo muestro por 'ID' al presionar el botón 'mostrar'
 */
 function mostrar()
 {
-	let aux=prompt("ingresar nombre")
-	txtIdNombre.value=aux
-	alert("ok");
+	let nombreIngresado;
+	nombreIngresado=prompt("ingresar nombre");
+	document.getElementById('txtIdNombre').value=nombreIngresado;
 }
 
