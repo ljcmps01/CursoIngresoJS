@@ -1,8 +1,22 @@
+/*
+Campos Alejo
+if 07
+*/
 function mostrar()
 {
-	//tomo la edad  
-	alert("ok");
-	
+	let edad;
+	let estadoCivil;
 
+	edad=document.getElementById("txtIdEdad").value;
+	estadoCivil=document.getElementById("estadoCivil").value;
 
-}//FIN DE LA FUNCIÓN
+	edad=parseInt(edad);	
+
+	if(edad<18)
+	{
+		if(estadoCivil!="Soltero")
+		{
+			alert("Es muy pequeño para NO ser soltero");
+		}
+	}
+}
