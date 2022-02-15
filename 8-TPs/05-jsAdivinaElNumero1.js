@@ -1,4 +1,7 @@
-/*Al comenzar el juego generamos un número 
+/*
+Campos Alejo
+TP 05
+Al comenzar el juego generamos un número 
 secreto del 1 al 100, en la pantalla del juego
  dispondremos de un cuadro de texto para ingresar
   un número y un botón “Verificar”, si el número 
@@ -12,15 +15,38 @@ var contadorIntentos;
 
 function comenzar()
 {
-	//Genero el número RANDOM entre 1 y 100
-	 
-		//alert(numeroSecreto );
-	
+	numeroSecreto=Math.floor(Math.random()*100);//Genero el número RANDOM entre 1 y 100
+	contadorIntentos=0;
+  //alert(numeroSecreto);
 
 }
 
 function verificar()
 {
-	
+	let numeroIngresado;
+  let diferencia;
+
+  numeroIngresado=document.getElementById("txtIdNumero").value;
+  numeroIngresado=parseInt(numeroIngresado);
+
+  contadorIntentos++; //Aumento el contador
+
+  if(numeroIngresado==numeroSecreto)
+  {
+    alert("Usted es el ganador!! en tan solo "+contadorIntentos+" intentos");
+  }
+  else
+  {
+    if(numeroIngresado>numeroSecreto)  
+    {
+      diferencia=numeroIngresado-numeroSecreto;
+      alert("Se pasó por "+diferencia);
+    }
+    else
+    {
+      diferencia=numeroSecreto-numeroIngresado;
+      alert("Le falta "+diferencia);
+    }
+  }
 	
 }
