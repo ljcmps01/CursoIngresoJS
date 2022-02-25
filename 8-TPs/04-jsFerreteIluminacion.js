@@ -1,6 +1,6 @@
 /*4.	
 Campos Alejo
-TP 04
+TP 04 SWITCH
 
 Para el departamento de iluminación:
 Tomando en cuenta que todas las lámparas están en oferta al mismo precio de $35 pesos final.
@@ -17,71 +17,66 @@ function CalcularPrecio ()
  	let precioLamparas;
     let cantidad;
     let marca;
-    let descuento;
+    let porcentaje;
     let precioFinal;
     let IngresosBrutos;
 
     precioLamparas=35;
-    descuento=0;
+    porcentaje=0;
     cantidad=document.getElementById("txtIdCantidad").value;
     marca=document.getElementById("Marca").value;
 
     cantidad=parseInt(cantidad);
 
-    if(cantidad>5)
+    switch(cantidad)
     {
-        descuento=50;
-    }
-    else
-    {
-        if(cantidad==5)
-        {
-            if(marca=="ArgentinaLuz")
+        case 1:
+        case 2:
+            porcentaje=0;
+        break;
+        case 3:
+            switch(marca)
             {
-                descuento=40;
+                case "ArgentinaLuz":
+                    porcentaje=15;
+                break;
+                case "FelipeLamparas":
+                    porcentaje=10;
+                break;
+                default:
+                    porcentaje=5;
+                break;
             }
-            else
+        break;
+        case 4:
+            switch(marca)
             {
-                descuento=30;
+                case "ArgentinaLuz":
+                case "FelipeLamparas":
+                    porcentaje=25;
+                break;
+                default:
+                    porcentaje=20;
+                break;
             }
-        }
-        else
-        {
-            if(cantidad==4)
+        break;
+        case 5:
+            switch(marca)
             {
-                if(marca=="ArgentinaLuz"||marca=="FelipeLamparas")
-                {
-                    descuento=25;
-                }
-                else{
-                    descuento=20;
-                }
+                case "ArgentinaLuz":
+                    porcentaje=40;
+                break;
+                default:
+                    porcentaje=30;
+                break;
             }
-            else
-            {
-                if(cantidad==3)
-                {
-                    if(marca=="ArgentinaLuz")
-                    {
-                        descuento=15;
-                    }
-                    else
-                    {
-                        if(marca=="FelipeLamparas")
-                        {
-                            descuento=10;
-                        }
-                        else
-                        {
-                            descuento=5;
-                        }
-                    }
-                }
-            }
-        }
+        break;
+        default:
+            porcentaje=50;
+        break;
     }
 
-    precioFinal=precioLamparas*cantidad*((100-descuento)/100);
+    precioFinal=precioLamparas*cantidad*((100-porcentaje)/100);
 
     if(precioFinal>120)//Verifico si corresponde el impuesto IIBB
     {
@@ -90,5 +85,5 @@ function CalcularPrecio ()
         alert("Usted pagó $"+ IngresosBrutos+" de IIBB");
     }
 
-    document.getElementById("txtIdprecioDescuento").value="$"+precioFinal;
+    document.getElementById("txtIdprecioDescuento").value = precioFinal;
 }
